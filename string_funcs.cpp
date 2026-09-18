@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "sort_algs.h"
+#include <assert.h>
 
 unsigned int my_strlen(const char *data)
 {
+    assert(data);
+
     unsigned int len = 0;
     const char *ptr = data;
 
@@ -19,6 +22,8 @@ unsigned int my_strlen(const char *data)
 
 int my_puts(const char *data)
 {
+    assert(data);
+
     const char *ptr = data;
 
     while (*ptr)
@@ -36,6 +41,9 @@ int my_puts(const char *data)
 
 char *my_strcpy(char *dest, const char *src)
 {
+    assert(dest);
+    assert(src);
+
     for (size_t i = 0; i < my_strlen(src) + 1; i++)
     {
         *(dest+i) = *(src+i);
@@ -46,6 +54,9 @@ char *my_strcpy(char *dest, const char *src)
 
 char *my_strcat(char *dest, const char *src)
 {
+    assert(dest);
+    assert(src);
+
     char *ptr = dest;
 
     while (*ptr)
@@ -63,6 +74,9 @@ char *my_strcat(char *dest, const char *src)
 
 int my_strcmp(const void *str1, const void *str2)
 {
+    assert(str1);
+    assert(str2);
+
     const char *ptr1 = *(const char * const *)str1;
     const char *ptr2 = *(const char * const *)str2;
 
@@ -87,6 +101,8 @@ int my_strcmp(const void *str1, const void *str2)
 
 char *my_strdup(const char *str)
 {
+    assert(str);
+
     char *data = (char *) calloc(my_strlen(str) + 1, sizeof(char));
 
     return my_strcpy(data, str);
@@ -94,6 +110,8 @@ char *my_strdup(const char *str)
 
 int my_atoi(const char *str)
 {
+    assert(str);
+
     int is_negative = 0;
     int num = 0;
     const char *ptr = str;
@@ -124,6 +142,8 @@ int my_atoi(const char *str)
 
 double my_atof(const char *str)
 {
+    assert(str);
+
     double num = 0;
     const char *ptr = str;
     int is_negative = 0;
@@ -166,6 +186,8 @@ double my_atof(const char *str)
 
 size_t my_strnlen(const char *str, size_t maxlen)
 {
+    assert(str);
+
     unsigned int len = 0;
     const char *ptr = str;
 
@@ -184,6 +206,8 @@ size_t my_strnlen(const char *str, size_t maxlen)
 
 const char * my_strchr(const char *str, int ch)
 {
+    assert(str);
+
     const char *ptr = str;
 
     while (*ptr)
@@ -201,6 +225,8 @@ const char * my_strchr(const char *str, int ch)
 
 const char * my_strrchr(const char *str, int ch)
 {
+    assert(str);
+
     const char *ptr = str;
     const char *answer = NULL;
 
@@ -219,6 +245,9 @@ const char * my_strrchr(const char *str, int ch)
 
 const char * my_strstr(const char *haystack, const char *needle)
 {
+    assert(haystack);
+    assert(needle);
+
     const char *ptr_hay = haystack;
     const char *ptr_ndl = needle;
     int in_str = 0;
@@ -254,6 +283,9 @@ const char * my_strstr(const char *haystack, const char *needle)
 
 ssize_t my_getline(char **lineptr, size_t *n, FILE *stream)
 {
+    assert(n);
+    assert(stream);
+
     size_t counter = 0;
     size_t start_size = 2;
     int ch = '\0';

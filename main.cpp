@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include "sort_algs.h"
 
-const int LENGTH = 8000;
-const char *ONEGIN = "onegin.txt";
-
 int main(void)
 {
     size_t nlines = 0;
@@ -24,10 +21,7 @@ int main(void)
 
     print_strings_array(real_text, nlines);
 
-    for (size_t i = 0; i <= nlines; i++)
-    {
-        free(text[i]);
-    }
+    free_text(text, nlines);
 
     return 0;
 }

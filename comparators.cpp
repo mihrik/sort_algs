@@ -76,6 +76,9 @@ int compare_double_down(const void *val1, const void *val2)
 
 int my_rewind_strcmp(const void *str1, const void *str2)
 {
+    assert(str1);
+    assert(str2);
+
     const char *ptr1 = *(char * const *)str1;
     int len1 = (int)my_strlen(ptr1) - 1;
     const char *ptr2 = *(char * const *)str2;

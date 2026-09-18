@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+const int LENGTH = 8000;
+const char * const ONEGIN = "onegin.txt";
+
 void swap_values(void *val1, void *val2, size_t elem_size);
 void quick_sort(size_t low, size_t high, void *to_sort, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
 size_t quick_alg(void *arr_part, size_t low, size_t high, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
@@ -34,3 +37,4 @@ const char * my_strstr(const char *haystack, const char *needle);
 ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
 int my_rewind_strcmp(const void *str1, const void *str2);
 void copy_arr(char **dest, char **src, size_t len);
+void free_text(char **text, size_t nlines);

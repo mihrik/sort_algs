@@ -86,3 +86,12 @@ void copy_arr(char **dest, char **src, size_t len)
         dest[i] = src[i];
     }
 }
+
+void free_text(char **text, size_t nlines)
+{
+    for (size_t i = 0; i <= nlines; i++)
+    {
+        free(text[i]);
+        text[i] = NULL;
+    }
+}
