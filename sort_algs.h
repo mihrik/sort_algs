@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void swap_values(void *val1, void *val2, size_t elem_size);
+void quick_sort(size_t low, size_t high, void *to_sort, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
+size_t quick_alg(void *arr_part, size_t low, size_t high, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
+void quick_print(const int arr_part[], size_t low, size_t left, size_t right, size_t high, const char process[], size_t pivot_position);
+void sort_two(void *val1, void *val2, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
+void sort_three(void *val1, void *val2, void *val3, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
+int compare_int_up(const void *val1, const void *val2);
+int compare_int_down(const void *val1, const void *val2);
+int compare_double_up(const void *val1, const void *val2);
+int compare_double_down(const void *val1, const void *val2);
+int sum_of_digits(int num);
+int compare_sod_down(const void *val1, const void *val2);
+int compare_sod_up(const void *val1, const void *val2);
+void mem_exchange(void *val1, void *val2, size_t elem_size);
+void sort_more(size_t low, size_t high, void *arr_part, size_t elem_size, size_t *pivot_position, int (*compare_func)(const void *val1, const void *val2));
+void print_int_array(int data[], size_t len);
+void print_double_array(double data[], size_t len);
+void print_strings_array(char *data[], size_t len);
+size_t read_text(const char *name, char *text[]);
+unsigned int my_strlen(const char *data);
+int my_puts(const char *data);
+char *my_strcpy(char *dest, const char *src);
+char *my_strcat(char *dest, const char *src);
+int my_strcmp(const void *str1, const void *str2);
+char *my_strdup(const char *str);
+int my_atoi(const char *str);
+double my_atof(const char *str);
+size_t my_strnlen(const char *str, size_t maxlen);
+const char * my_strchr(const char *str, int ch);
+const char * my_strrchr(const char *str, int ch);
+const char * my_strstr(const char *haystack, const char *needle);
+ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
+int my_rewind_strcmp(const void *str1, const void *str2);
+void copy_arr(char **dest, char **src, size_t len);
