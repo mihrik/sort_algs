@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 const int LENGTH = 8000;
-const char * const ONEGIN = "onegin.txt";
 
 void swap_values(void *val1, void *val2, size_t elem_size);
 void quick_sort(size_t low, size_t high, void *to_sort, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
@@ -21,7 +20,7 @@ void sort_more(size_t low, size_t high, void *arr_part, size_t elem_size, size_t
 void print_int_array(int data[], size_t len);
 void print_double_array(double data[], size_t len);
 void print_strings_array(char *data[], size_t len);
-size_t read_text(const char *name, char *text[]);
+char * read_text(const char *name);
 unsigned int my_strlen(const char *data);
 int my_puts(const char *data);
 char *my_strcpy(char *dest, const char *src);
@@ -36,5 +35,5 @@ const char * my_strrchr(const char *str, int ch);
 const char * my_strstr(const char *haystack, const char *needle);
 ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
 int my_rewind_strcmp(const void *str1, const void *str2);
-void copy_arr(char **dest, char **src, size_t len);
-void free_text(char **text, size_t nlines);
+char ** getlines(char *text, size_t *len);
+int check_error(void *arr);
