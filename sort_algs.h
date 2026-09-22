@@ -37,3 +37,4 @@ ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
 int my_rewind_strcmp(const void *str1, const void *str2);
 char ** getlines(char *text, size_t *len);
 int check_error(void *arr);
+long get_file_size(const char *name);

@@ -74,10 +74,7 @@ char * read_text(const char *name)
     if (file_num == -1)
         return NULL;
 
-    struct stat file_info = {};
-    stat(name, &file_info);
-
-    long buf_size = file_info.st_size;
+    long buf_size = get_file_size(name);
     char *buffer = (char *)calloc((size_t)buf_size + 1, sizeof(char));
     if (buffer == NULL)
         return NULL;
@@ -130,4 +127,12 @@ char ** getlines(char *text, size_t *len)
 int check_error(void *arr)
 {
     return arr == NULL;
+}
+
+long get_file_size(const char *name)
+{
+    struct stat file_info = {};
+    stat(name, &file_info);
+
+    return file_info.st_size;
 }
