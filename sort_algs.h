@@ -2,6 +2,25 @@
 
 const int LENGTH = 8000;
 
+enum errors
+{
+    ABSENCE_OF_FILE = 13,
+    MAKE_FILE_ERROR,
+    MEMORY_ALLOCATION_ERROR
+};
+
+typedef struct buf_data
+{
+    size_t char_num;
+    size_t strings_num;
+} buf_data;
+
+typedef struct str_data
+{
+    long len;
+    char *line;
+} str_data;
+
 void swap_values(void *val1, void *val2, size_t elem_size);
 void quick_sort(size_t low, size_t high, void *to_sort, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
 size_t quick_alg(void *arr_part, size_t low, size_t high, int (*compare_func)(const void *val1, const void *val2), size_t elem_size);
@@ -35,6 +54,11 @@ const char * my_strrchr(const char *str, int ch);
 const char * my_strstr(const char *haystack, const char *needle);
 ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
 int my_rewind_strcmp(const void *str1, const void *str2);
-char ** getlines(char *text, size_t *len);
+str_data * getlines(char *text, size_t *len);
 int check_error(void *arr);
 long get_file_size(const char *name);
+void parse_string(buf_data *text_info, char *text);
+size_t fill_onegin(str_data *onegin, buf_data text_info, char *text);
+int my_straight_strcmp(const void *str1, const void *str2);
+int compare_pointers_up(const void *val1, const void *val2);
+void print_struct_array(str_data *data, size_t len);

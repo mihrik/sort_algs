@@ -87,40 +87,21 @@ char * read_text(const char *name)
     return buffer;
 }
 
-char ** getlines(char *text, size_t *len)
+str_data * getlines(char *text, size_t *len)
 {
     assert(text);
     assert(len);
 
-    size_t char_num = 0;
-    size_t strings_num = 1;
+    buf_data text_info = {.char_num = 0, .strings_num = 1};
 
-    while(text[char_num])
-    {
-        if (text[char_num] == '\n')
-        {
-            strings_num++;
-            text[char_num] = '\0';
-        }
+    parse_string(&text_info, text);
 
-        char_num++;
-    }
-
-    char **onegin = (char **)calloc(strings_num, sizeof(char *));
+    str_data *onegin = (str_data *)calloc(text_info.strings_num, sizeof(str_data));
     if (onegin == NULL)
         return NULL;
-    onegin[0] = text;
+    onegin[0].line = text;
 
-    size_t pointer = 1;
-    for (size_t j = 0; j < char_num; j++)
-    {
-        if (text[j] == '\0')
-        {
-            onegin[pointer++] = text + j + 1;
-        }
-    }
-
-    *len = pointer;
+    *len = fill_onegin(onegin, text_info, text);
     return onegin;
 }
 
@@ -131,8 +112,56 @@ int check_error(void *arr)
 
 long get_file_size(const char *name)
 {
+    assert(name);
+
     struct stat file_info = {};
     stat(name, &file_info);
 
     return file_info.st_size;
+}
+
+void parse_string(buf_data *text_info, char *text)
+{   assert(text_info);
+    assert(text);
+
+
+    while(text[text_info->char_num])
+    {
+        if (text[text_info->char_num] == '\n')
+        {
+            text_info->strings_num++;
+            text[text_info->char_num] = '\0';
+        }
+
+        text_info->char_num++;
+    }
+}
+
+size_t fill_onegin(str_data *onegin, buf_data text_info, char *text)
+{
+    assert(onegin);
+    assert(text);
+
+    size_t pointer = 1;
+    for (size_t j = 0; j < text_info.char_num; j++)
+    {
+        if (text[j] == '\0')
+        {
+            onegin[pointer - 1].len = (text + j) - onegin[pointer - 1].line;
+            onegin[pointer++].line = text + j + 1;
+        }
+    }
+
+    onegin[pointer - 1].len = (long)(text + text_info.char_num) - (long)onegin[pointer - 1].line;
+    return pointer;
+}
+
+void print_struct_array(str_data *data, size_t len)
+{
+    assert(data);
+
+    for (size_t i = 0; i < len; i++)
+    {
+        printf("%s\n", (data[i]).line);
+    }
 }
