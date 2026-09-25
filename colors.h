@@ -11,6 +11,7 @@
 #define RESET_COLOR "\033[0m"
 #define BOLD_BLUE "\033[94;1m"
 #define BOLD_RED "\033[91;1m"
-#define PRINT_COLOR(x, ...)       \
-    printf(x __VA_ARGS__); \
-    printf(RESET_COLOR)
+#define PRINT_COLOR(x, ...)  {    \
+    printf(x __VA_ARGS__);        \
+    printf(RESET_COLOR);          \
+}

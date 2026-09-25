@@ -23,12 +23,14 @@ int main(int argc, const char * const argv[])
     // TODO readme
 
     size_t len = 0;
+
     char *text = NULL;
     if (check_error(text = read_text(argv[1])))
     {
         PRINT_COLOR(EXTRA_RED, "Ошибка обработки входного файла либо выделения памяти\n");
         return MAKE_FILE_ERROR;
     }
+
     str_data *onegin = NULL;
     if (check_error(onegin = getlines(text, &len)))
     {

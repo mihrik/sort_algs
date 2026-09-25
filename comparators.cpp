@@ -155,5 +155,5 @@ int compare_pointers_up(const void *val1, const void *val2)
     const str_data *ptr1 = (const str_data *)val1;
     const str_data *ptr2 = (const str_data *)val2;
 
-    return ptr1->line - ptr2->line;
+    return int(ptr1->line - ptr2->line);
 }
